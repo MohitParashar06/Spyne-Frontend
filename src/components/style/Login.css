@@ -1,0 +1,34 @@
+/* Form Titles */
+form h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Form Input Styles */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    background: #f4f6f8;
+    border: 1px solid #ddd;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  /* Center Align Forms */
+  .form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .form-container form {
+    width: 100%;
+    max-width: 400px;
+  }
+  

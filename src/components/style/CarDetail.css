@@ -1,0 +1,18 @@
+/* Car Detail */
+.car-detail {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .car-detail h2 {
+    font-size: 2rem;
+  }
+  
+  .car-detail p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    color: #666;
+  }
+  
