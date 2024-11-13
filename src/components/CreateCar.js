@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+axios.defaults.withCredentials = true;
 
 function CreateCar() {
   const [title, setTitle] = useState('');
@@ -14,7 +15,7 @@ function CreateCar() {
   const handleCreate = async (e) => {
     e.preventDefault();
     const tagsArray = tags.split(',').map((tag) => tag.trim());
-    await axios.post('http://localhost:5000/api/cars', { title, description, tags: tagsArray, images });
+    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/cars`, { title, description, tags: tagsArray, images });
     navigate('/dashboard');
   };
 

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+axios.defaults.withCredentials = true;
 
 function EditCar() {
   const [title, setTitle] = useState('');
@@ -17,7 +18,7 @@ function EditCar() {
   }, []);
 
   const fetchCar = async () => {
-    const response = await axios.get(`http://localhost:5000/api/cars/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cars/${id}`);
     const { title, description, tags, images } = response.data;
     setTitle(title);
     setDescription(description);
@@ -28,7 +29,7 @@ function EditCar() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     const tagsArray = tags.split(',').map((tag) => tag.trim());
-    await axios.put(`http://localhost:5000/api/cars/${id}`, { title, description, tags: tagsArray, images });
+    await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/cars/${id}`, { title, description, tags: tagsArray, images });
     navigate('/dashboard');
   };
 

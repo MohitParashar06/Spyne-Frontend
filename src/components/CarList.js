@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './style/CarList.css'
+axios.defaults.withCredentials = true;
 
 function CarList() {
   const [cars, setCars] = useState([]);
@@ -14,7 +15,7 @@ function CarList() {
   }, []);
 
   const fetchCars = async () => {
-    const response = await axios.get(`http://localhost:5000/api/cars/search?keyword=${search}`);
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cars/search?keyword=${search}`);
     setCars(response.data);
   };
 

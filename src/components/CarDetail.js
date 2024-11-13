@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import './style/CarDetail.css'
-
+axios.defaults.withCredentials = true;
 function CarDetail() {
   const [car, setCar] = useState(null);
   const { id } = useParams();
@@ -15,12 +15,12 @@ function CarDetail() {
   }, []);
 
   const fetchCar = async () => {
-    const response = await axios.get(`http://localhost:5000/api/cars/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/cars/${id}`);
     setCar(response.data);
   };
 
   const handleDelete = async () => {
-    await axios.delete(`http://localhost:5000/api/cars/${id}`);
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/cars/${id}`);
     navigate('/dashboard');
   };
 

@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './style/Login.css'
 
+axios.defaults.withCredentials = true;
+
 function Login({ setToken }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,10 +15,12 @@ function Login({ setToken }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { username, password });
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, { username, password });
       setToken(response.data.token);
       navigate('/dashboard');
     } catch (error) {
+      console.log('Hello');
+      console.log(error);
       alert('Invalid credentials');
     }
   };
