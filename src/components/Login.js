@@ -16,7 +16,9 @@ function Login({ setToken }) {
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/users/login`, { username, password });
+      console.log('hello1');
       setToken(response.data.token);
+      console.log('hello2');
       navigate('/dashboard');
     } catch (error) {
       console.log('Hello');
